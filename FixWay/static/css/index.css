@@ -1,0 +1,410 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #eaeaea;
+    overflow: auto;
+}
+
+header {
+    position: relative;
+    z-index: 1;
+}
+
+#home .container {
+    height: 100vh;
+    position: relative;
+    z-index: 1; 
+    overflow-x: hidden;
+}
+
+/* Filtro de la cortina */
+.cortina {
+    position: absolute; /* Permite que se posicione sobre el contenedor */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Capa oscura */
+    z-index: 5 !important; /* Más alto que el contenedor para estar por encima */
+}
+
+/* Estilos de los items de imagen */
+.side {
+    z-index: 2; /* Mantiene .side por debajo de .cortina */
+}
+.container .side .item {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+    z-index: 2; /* Los items también están por debajo de la cortina */
+}
+
+/* Posiciones de los items */
+.side .item:nth-child(1),
+.side .item:nth-child(2) {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.side .item:nth-child(3) {
+    left: 50%;
+}
+.side .item:nth-child(4) {
+    left: calc(50% + 220px);
+}
+.side .item:nth-child(5) {
+    left: calc(50% + 440px);
+}
+
+.side .item:nth-child(n + 6) {
+    left: calc(50% + 660px);
+    display: none;
+}
+
+/* Estilos del contenido dentro de cada item */
+.item .content {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+    z-index: 1; /* Asegura que el contenido esté sobre la cortina */
+}
+
+.side .item:nth-child(2) .content {
+    display: block;
+}
+
+/* Estilos del texto y botón en la descripción */
+.content .name {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+}
+
+.content .des {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 0.3s forwards;
+}
+
+.content button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 0.6s forwards;
+}
+
+@keyframes animate {
+    
+    from {
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+@media (max-width: 768px) {
+    #home .container {
+        overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+    }
+
+    .side {
+        display: flex;
+        width: 100vw; /* Ancho completo de la ventana */
+        height: 100vh; /* Alto completo de la ventana */
+        overflow: hidden; /* Oculta los elementos que se desbordan */
+        position: relative; /* Asegura que los items se posicionen correctamente */
+    }
+
+    .item {
+        flex: 0 0 100%; /* Cada item ocupa el 100% del ancho de la ventana */
+        height: 100%; /* Cada item ocupa el 100% de la altura de la ventana */
+        display: none; /* Oculta todos los items por defecto */
+        position: absolute; /* Posiciona absolutamente para que solo uno sea visible */
+        top: 0;
+        left: 0;
+        background-image: none; /* Elimina la imagen de fondo */
+        background-size: cover; /* Opcional, para asegurarse de que el fondo no se muestre */
+    }
+
+    .item.active {
+        display: block; /* Muestra solo el item activo */
+    }
+
+    .item .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Centra el contenido dentro del item */
+        width: 80%; /* Ajusta el ancho para dispositivos móviles */
+        max-width: 300px; /* Ajusta el ancho máximo */
+        text-align: center; /* Centra el texto dentro del contenido */
+        color: #eee;
+        font-family: system-ui;
+        display: block; /* Asegura que el contenido esté visible */
+        background: transparent; /* Asegura que el fondo del contenido sea transparente */
+    }
+}
+
+
+
+/* Botones de navegación */
+.button {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    z-index: 5; /* Para estar visible sobre la cortina */
+}
+
+.button button {
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid #000;
+    transition: 0.3s;
+}
+
+.button button:hover {
+    background-color: #ababab;
+    color: #fff;
+}
+
+
+
+
+
+
+/* Estilos para la sección Nosotros */
+.section.nosotros {
+    padding: 40px 0;
+    background-color: #f4f4f4;
+    text-align: center; /* Centra el texto en la sección */
+}
+
+.section.nosotros .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section.nosotros h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.row {
+    display: flex;
+    justify-content: center; /* Centra las columnas en la fila */
+    flex-wrap: wrap; /* Permite que las columnas se ajusten en pantallas más pequeñas */
+}
+
+.column {
+    flex: 1; 
+    max-width: 300px; /* Aumenta el ancho máximo si es necesario */
+    margin: 30px 15px; /* Reduce el margen horizontal entre columnas */
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.column h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.column p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Cambia la dirección de las columnas a una sola columna en pantallas pequeñas */
+        align-items: center; /* Centra las columnas en la fila */
+    }
+
+    .column {
+        margin: 10px 0; /* Ajusta el margen vertical entre columnas */
+        max-width: 90%; /* Reduce el ancho máximo para adaptarse mejor a pantallas pequeñas */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos para la sección de Ubicación */
+.section.ubicacion {
+    padding: 60px 0;
+    background-color: #FFFFFF;
+}
+
+.section.ubicacion .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    height: 500PX;
+}
+
+.section.ubicacion h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section.ubicacion .row {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre columnas */
+}
+
+
+
+.section.ubicacion .map-column {
+    flex: 1;
+    max-width: 50%;
+    height: 400px;
+    margin: 20px;
+}
+
+.section.ubicacion .info-column {
+    flex: 1;
+    text-align: left;
+    max-width: 50%;
+    margin: 20px 50px;
+}
+
+.section.ubicacion .info-column p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.section.ubicacion .map-column iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos del footer */
+.footer {
+    background-color: #F5F5F5;
+    color: #222;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin: 0 10px;
+}
+
+.footer-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.footer-column p,
+.footer-column a {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.footer-column a {
+    color: #222;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    color: #222;
+}
+
+.logo img {
+    max-width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+    height: auto;
+}
+
+.footer-bottom {
+    background-color: #F5F5F5;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+

@@ -1,0 +1,76 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos de la Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 100%); /* Degradado que va de sólido a semitransparente */
+    backdrop-filter: blur(10px); /* Difumina el fondo */
+    padding: 10px 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Opcional: Añade una línea sutil en la parte inferior */
+}
+
+.navbar-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: black; /* Cambiado a negro para mayor contraste con el fondo semitransparente */
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: black; /* Cambiado a negro para mayor contraste con el fondo semitransparente */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #ff6600;
+}
+
+/* Estilos de la sección para el ejemplo */
+.hero-section {
+    margin-top: 120px; /* Ajusta el margen para compensar la altura de la navbar más grande */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+}
