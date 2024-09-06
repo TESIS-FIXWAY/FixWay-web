@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventario</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inventario</h1>
+    <p>{% if inventarios %} Datos cargados {% else %} No hay datos {% endif %}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Producto</th>
+                <th>Categoría</th>
+                <th>Marca</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Costo</th>
+                <th>Marca Automóvil</th>
+                <th>Año Uso Inicio</th>
+                <th>Año Uso Fin</th>
+                <th>Origen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inventario in inventarios %}
+            <tr>
+                <td>{{ inventario.id }}</td>
+                <td>{{ inventario.nombreProducto }}</td>
+                <td>{{ inventario.categoria }}</td>
+                <td>{{ inventario.marcaProducto }}</td>
+                <td>{{ inventario.descripcion }}</td>
+                <td>{{ inventario.cantidad }}</td>
+                <td>{{ inventario.precioDetalle }}</td>
+                <td>{{ inventario.costo }}</td>
+                <td>{{ inventario.marcaAutomovil }}</td>
+                <td>{{ inventario.anoProductoUsoInicio }}</td>
+                <td>{{ inventario.anoProductoUsoFin }}</td>
+                <td>{{ inventario.origen }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
