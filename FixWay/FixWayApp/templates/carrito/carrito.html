@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="{% static 'css/carrito.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="cart-page">
+        <h1>Tu Carrito de Compras</h1>
+
+        <!-- Mensaje de error si existe -->
+        {% if request.session.error %}
+        <div class="error-message">
+            <p>{{ request.session.error }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Elementos del carrito -->
+        <div class="cart-items">
+            {% for producto_id, item in carrito.items %}
+            <div class="cart-card">
+                <div class="cart-card-image">
+                    <img src="{% if item.imagen_url %}{{ item.imagen_url }}{% else %}{% static 'images/notFile.png' %}{% endif %}" alt="{{ item.nombre }}" />
+                </div>
+                <div class="cart-card-details">
+                    <h2>{{ item.nombre }}</h2>
+                    <div class="cart-card-info">
+                        <div class="cart-card-info-item">
+                            <!-- Ajustar a producto_id -->
+                            <p id="available-{{ producto_id }}">Cantidad disponible: {{ item.cantidad_disponible }}</p>
+                        </div>                        
+                        <div class="cart-card-info-item">
+                            <p>Precio: CLP ${{ item.precio|floatformat:0 }}</p>
+                        </div>
+                        <div class="cart-card-info-item">
+                            <a href="{% url 'eliminar_del_carrito' producto_id %}" class="remove-button"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        </div>
+                    </div>
+                    <div class="quantity-selector">
+                        <button class="quantity-button" onclick="adjustQuantity('{{ producto_id }}', -1)">-</button>
+                        <input type="text" id="quantity-{{ producto_id }}" value="{{ item.cantidad }}" readonly />
+                        <button class="quantity-button" onclick="adjustQuantity('{{ producto_id }}', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Tu carrito está vacío.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Total del carrito -->
+        <div class="cart-total">
+            <h2>Total: CLP ${{ total|floatformat:0 }}</h2>
+        </div>
+
+        <!-- Acciones del carrito -->
+        <div class="cart-actions">
+            <a href="{% url 'inventario' %}" class="button">Seguir comprando</a>
+            <a href="#" class="button">Finalizar compra</a>
+        </div>
+    </div>
+
+    <script>
+        function adjustQuantity(productId, change) {
+            var quantityInput = document.getElementById('quantity-' + productId);
+            var currentQuantity = parseInt(quantityInput.value);
+            var availableQuantity = parseInt(document.getElementById('available-' + productId).innerText.split(': ')[1]);
+    
+            var newQuantity = currentQuantity + change;
+            if (newQuantity >= 1 && newQuantity <= availableQuantity) {
+                quantityInput.value = newQuantity;
+            }
+        }
+    </script>
+</body>
+</html>

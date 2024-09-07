@@ -12,24 +12,68 @@
     {% include 'navbar.html' %}
 
     <main class="container">
-        <h1>Inventario</h1>
-        <p class="status-message">{% if inventarios %} Datos cargados {% else %} No hay datos {% endif %}</p>
-        <div class="products-grid">
-            {% for inventario in inventarios %}
-            <div class="product-card">
-                <a href="{% url 'detalle_producto' inventario.id %}">
-                    <img src="{% if inventario.imagenURL %}{{ inventario.imagenURL }}{% else %}{% static 'images/notFile.png' %}{% endif %}" alt="{{ inventario.nombreProducto }}">
-                    <div class="product-info">
-                        <h2>{{ inventario.nombreProducto }}</h2>
-                        <p class="category">{{ inventario.categoria }}</p>
-                        <p class="description">{{ inventario.descripcion }}</p>
-                        <p class="price">Precio: ${{ inventario.precioDetalle }}</p>
-                        <p class="quantity">Cantidad: {{ inventario.cantidad }}</p>
-                    </div>
-                </a>
+        <!-- Encabezado con buscador y selector de categoría -->
+        <div class="encabezado">
+            <h1>Inventario</h1>
+            <div class="filters">
+                <!-- Buscador -->
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Buscar en inventario"
+                    onkeyup="filterProducts()"
+                />
             </div>
-            {% endfor %}
+        </div>
+
+        <!-- Contenedor principal con dos columnas -->
+        <div class="main-content">
+            <!-- Listado de categorías -->
+            <div class="category-list">
+                <ul>
+                    <li onclick="filterByCategory('Sistema de Suspensión')">Sistema de Suspensión</li>
+                    <li onclick="filterByCategory('Afinación del Motor')">Afinación del Motor</li>
+                    <li onclick="filterByCategory('Sistema de Inyección Electrónica')">Sistema de Inyección Electrónica</li>
+                    <li onclick="filterByCategory('Sistema de Escape')">Sistema de Escape</li>
+                    <li onclick="filterByCategory('Sistema de Climatización')">Sistema de Climatización</li>
+                    <li onclick="filterByCategory('Sistema de Lubricación')">Sistema de Lubricación</li>
+                    <li onclick="filterByCategory('Sistema de Dirección')">Sistema de Dirección</li>
+                    <li onclick="filterByCategory('Sistema de Frenos')">Sistema de Frenos</li>
+                    <li onclick="filterByCategory('Sistema de Encendido')">Sistema de Encendido</li>
+                    <li onclick="filterByCategory('Inspección de Carrocería y Pintura')">Inspección de Carrocería y Pintura</li>
+                    <li onclick="filterByCategory('Sistema de Transmisión')">Sistema de Transmisión</li>
+                    <li onclick="filterByCategory('Sistema de Refrigeración')">Sistema de Refrigeración</li>
+                    <li onclick="filterByCategory('Accesorios y Personalización')">Accesorios y Personalización</li>
+                    <li onclick="filterByCategory('Herramientas y Equipos')">Herramientas y Equipos</li>
+                </ul>
+                
+                <!-- Mostrar la categoría seleccionada -->
+                <div id="selectedCategory" class="selected-category" onclick="clearCategory()">
+                    <!-- Esta etiqueta se llenará dinámicamente con la categoría seleccionada -->
+                </div>
+            </div>
+
+            <!-- Productos en el inventario -->
+            <div class="products-grid" id="productsGrid">
+                {% for inventario in inventarios %}
+                <div class="product-card" data-category="{{ inventario.categoria }}" data-name="{{ inventario.nombreProducto }}" data-description="{{ inventario.descripcion }}" data-price="{{ inventario.precioDetalle }}">
+                    <a href="{% url 'detalle_producto' inventario.id %}">
+                        <img src="{% if inventario.imagenURL %}{{ inventario.imagenURL }}{% else %}{% static 'images/notFile.png' %}{% endif %}" alt="{{ inventario.nombreProducto }}">
+                        <div class="product-info">
+                            <h2>{{ inventario.nombreProducto }}</h2>
+                            <p class="category">{{ inventario.categoria }}</p>
+                            <p class="description">{{ inventario.descripcion }}</p>
+                            <p class="price">Precio: ${{ inventario.precioDetalle }}</p>
+                            <p class="quantity">Cantidad: {{ inventario.cantidad }}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </main>
+
+    <!-- Script para filtrar productos -->
+    <script src="{% static 'js/filtrar.js' %}"></script>
 </body>
 </html>
