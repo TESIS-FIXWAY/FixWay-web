@@ -1,0 +1,203 @@
+.progress-tracker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.progress-line {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background-color: #f1f1f1;
+    border-radius: 2px;
+    overflow: visible; /* Cambia de 'hidden' a 'visible' */
+}
+.progress-line::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    background-color: #4CAF50;
+    width: 0%; /* Inicialmente la línea de progreso está en 0% */
+    transition: width 0.5s ease; /* Añadimos una animación a la expansión del ancho */
+}
+.progress-line[data-progress="pendiente"]::before {
+    width: 0%; /* 0% para pendiente */
+}
+
+.progress-line[data-progress="en_proceso"]::before {
+    width: 50%; /* 50% para en proceso */
+}
+
+.progress-line[data-progress="terminado"]::before {
+    width: 100%; /* 100% para terminado */
+}
+
+
+.progress-point {
+    width: 15px;
+    height: 15px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    position: absolute; /* Cambiamos a posición absoluta */
+    top: -6px; /* Asegúrate de que el punto esté justo por encima de la línea */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.progress-point.active {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+.progress-point:nth-child(1) {
+    left: 0%;
+}
+
+.progress-point:nth-child(2) {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.progress-point:nth-child(3) {
+    left: 100%;
+    transform: translateX(-100%);
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.progress-labels span {
+    font-size: 0.85em;
+    color: #555;
+}
+
+/* Otros estilos existentes para el layout y tarjetas */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    width: 1200px;
+    margin: 120px auto !important;
+    padding: 20px;
+    overflow-y: none; 
+}
+
+.mantencion-card {
+    width: 1000px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.form-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+/* Mantenciones */
+.mantenciones-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    max-height: calc(100vh - 200px); /* Ajusta el alto disponible */
+    overflow-y: auto;
+}
+
+
+
+.mantencion-info, .productos-info {
+    width: 48%;
+    text-align: left;
+}
+
+.mantencion-card h3, h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.mantencion-card p, ul {
+    margin: 5px 0;
+    color: #555;
+    line-height: 1.4;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+
+/* Responsivo */
+@media (max-width: 800px) {
+    .mantencion-card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .mantencion-info, .productos-info {
+        width: 100%;
+    }
+}
