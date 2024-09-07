@@ -8,7 +8,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 20px 20px 20px;
+    padding: 120px 20px 20px 20px;
 }
 
 h1 {
@@ -46,8 +46,9 @@ h1 {
 }
 
 .product-card img {
-    width: 100%;
-    height: fit-content;
+    margin: 5px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
     background-color: #f4f4f4; 
 }
@@ -80,3 +81,5 @@ h1 {
 .product-info .origin {
     font-size: 0.9rem;
 }
+
+

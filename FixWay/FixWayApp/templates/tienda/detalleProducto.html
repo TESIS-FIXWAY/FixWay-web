@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ producto.nombreProducto }}</title>
+    <link rel="stylesheet" href="{% static 'css/detalleProducto.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <main class="product-container">
+        <section class="product-main">
+            <div class="image-container">
+                <img src="{% if producto.imagenURL %}{{ producto.imagenURL }}{% else %}{% static 'images/notFile.png' %}{% endif %}" alt="{{ producto.nombreProducto }}">
+            </div>
+
+            <div class="product-details">
+                <h1 class="product-name">{{ producto.nombreProducto }}</h1>
+                <p class="product-price">Precio: ${{ producto.precioDetalle }}</p>
+                <p class="product-stock">Cantidad disponible: {{ producto.cantidad }}</p>
+
+                <div class="buy-section">
+                    <button class="buy-button">Comprar ahora</button>
+                    <button class="add-cart-button">Agregar al carrito</button>
+                </div>
+
+                <p class="product-description-short">
+                    {{ producto.descripcion }}
+                </p>
+
+                <ul class="product-features">
+                    <li>Marca: {{ producto.marcaProducto }}</li>
+                    <li>Marca Automóvil: {{ producto.marcaAutomovil }}</li>
+                    <li>Años de Uso: {{ producto.anoProductoUsoInicio }} - {{ producto.anoProductoUsoFin }}</li>
+                    <li>Origen: {{ producto.origen }}</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="product-description-long">
+            <h2>Descripción del producto</h2>
+            <p>{{ producto.descripcion }}</p>
+        </section>
+    </main>
+</body>
+</html>

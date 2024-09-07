@@ -1,0 +1,132 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.product-container {
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.product-main {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.image-container {
+    flex: 1;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.product-details {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 24px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.product-stock {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.buy-section {
+    margin-bottom: 30px;
+}
+
+.buy-button, .add-cart-button {
+    background-color: #3483fa;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.add-cart-button {
+    background-color: #ffcc00;
+}
+
+.buy-button:hover {
+    background-color: #2968c8;
+}
+
+.add-cart-button:hover {
+    background-color: #e6b800;
+}
+
+.product-description-short {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.product-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-features li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.product-description-long {
+    margin-top: 20px;
+}
+
+.product-description-long h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.product-description-long p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .product-main {
+        flex-direction: column;
+    }
+
+    .buy-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buy-button, .add-cart-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
