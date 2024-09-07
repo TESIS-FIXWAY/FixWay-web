@@ -1,63 +1,78 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mantenciones por Patente</title>
-    <link rel="stylesheet" href="{% static 'css/mantenciones.css' %}">
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/mantenciones.css' %}" />
+  </head>
+  <body>
     {% include 'navbar.html' %}
 
     <div class="container">
-        <h1>Buscar Mantenciones por Patente</h1>
+      <h1>Buscar Mantenciones por Patente</h1>
+      <form method="POST" class="form-container">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="patente">Patente:</label>
+          <input
+            type="text"
+            id="patente"
+            name="patente"
+            required
+            maxlength="6"
+            style="text-transform: uppercase"
+            oninput="this.value = this.value.toUpperCase();"
+          />
+        </div>
+        <button type="submit" class="btn-submit">Buscar</button>
+      </form>
 
-        <form method="POST" class="form-container">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="patente">Patente:</label>
-                <input type="text" id="patente" name="patente" required>
+      {% if mantenciones %}
+      <h2>Mantenciones para la patente: {{ patente }}</h2>
+      <div class="mantenciones-container">
+        {% for mantencion in mantenciones %}
+        <div class="mantencion-card">
+          <h3>ID: {{ mantencion.id }}</h3>
+
+          <div class="progress-tracker">
+            <div
+              class="progress-line"
+              data-progress="{% if mantencion.estado == 'pendiente' %}pendiente{% elif mantencion.estado == 'en proceso' %}en_proceso{% else %}terminado{% endif %}"
+            >
+              <div
+                class="progress-point {% if mantencion.estado == 'pendiente' or mantencion.estado == 'en proceso' or mantencion.estado == 'terminado' %} active {% endif %}"
+              ></div>
+              <div
+                class="progress-point {% if mantencion.estado == 'en proceso' or mantencion.estado == 'terminado' %} active {% endif %}"
+              ></div>
+              <div
+                class="progress-point {% if mantencion.estado == 'terminado' %} active {% endif %}"
+              ></div>
             </div>
-            <button type="submit" class="btn-submit">Buscar</button>
-        </form>
-
-        {% if mantenciones %}
-            <h2>Mantenciones para la patente: {{ patente }}</h2>
-            <div class="mantenciones-container">
-                {% for mantencion in mantenciones %}
-                <div class="mantencion-card">
-                    <h3>ID: {{ mantencion.id }}</h3>
-
-                    <!-- Barra de progreso estilo seguimiento de envío -->
-                    <div class="progress-tracker">
-                        <div class="progress-line" data-progress="{% if mantencion.estado == 'pendiente' %}pendiente{% elif mantencion.estado == 'en proceso' %}en_proceso{% else %}terminado{% endif %}">
-                            <div class="progress-point {% if mantencion.estado == 'pendiente' or mantencion.estado == 'en proceso' or mantencion.estado == 'terminado' %} active {% endif %}"></div>
-                            <div class="progress-point {% if mantencion.estado == 'en proceso' or mantencion.estado == 'terminado' %} active {% endif %}"></div>
-                            <div class="progress-point {% if mantencion.estado == 'terminado' %} active {% endif %}"></div>
-                        </div>
-                        <div class="progress-labels">
-                            <span>Pendiente</span>
-                            <span>En Proceso</span>
-                            <span>Terminado</span>
-                        </div>
-                    </div>
-
-                    <p><strong>Descripción:</strong> {{ mantencion.descripcion }}</p>
-                    <!-- <p><strong>Costo Total:</strong> ${{ mantencion.costoTotal }}</p> -->
-                    <!-- <p><strong>Kilometraje:</strong> {{ mantencion.kilometrajeMantencion }} km</p> -->
-                    <h4>Productos:</h4>
-                    <ul>
-                        {% for producto in mantencion.productos %}
-                        <li>{{ producto.nombreProducto }} - Cantidad: {{ producto.cantidad }} - Precio: ${{ producto.precio }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endfor %}
+            <div class="progress-labels">
+              <span>Pendiente</span>
+              <span>En Proceso</span>
+              <span>Terminado</span>
             </div>
-        {% elif patente %}
-            <p>No se encontraron mantenciones para la patente "{{ patente }}".</p>
-        {% endif %}
+          </div>
+
+          <p><strong>Descripción:</strong> {{ mantencion.descripcion }}</p>
+          <h4>Productos:</h4>
+          <ul>
+            {% for producto in mantencion.productos %}
+            <li>
+              {{ producto.nombreProducto }} - Precio: ${{ producto.precio }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+      {% elif patente %}
+      <p>No se encontraron mantenciones para la patente "{{ patente }}".</p>
+      {% endif %}
     </div>
-</body>
+  </body>
 </html>
