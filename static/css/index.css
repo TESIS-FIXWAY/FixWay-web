@@ -6,291 +6,111 @@
 }
 
 body {
-    background: #eaeaea;
-    overflow: auto;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Evita el scroll en el body */
 }
 
-header {
+/* Estilos del slider */
+.slider {
     position: relative;
-    z-index: 1;
+    width: 100vw; /* Ancho completo de la ventana */
+    height: 100vh; /* Alto completo de la ventana */
+    overflow: hidden;
 }
 
-#home .container {
-    height: 100vh;
-    position: relative;
-    z-index: 1; 
-    overflow-x: hidden;
-}
-
-/* Filtro de la cortina */
-.cortina {
-    position: absolute; /* Permite que se posicione sobre el contenedor */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Capa oscura */
-    z-index: 5 !important; /* Más alto que el contenedor para estar por encima */
-}
-
-/* Estilos de los items de imagen */
-.side {
+.slides {
     display: flex;
     transition: transform 0.5s ease;
-}
-
-.container .side .item {
-    width: 200px;
-    height: 300px;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    border-radius: 20px;
-    background-position: 50% 50%;
-    background-size: cover;
-    display: inline-block;
-    transition: 0.5s;
-    z-index: 2; /* Los items también están por debajo de la cortina */
-}
-
-/* Posiciones de los items */
-.side .item:nth-child(1),
-.side .item:nth-child(2) {
-    top: 0;
-    left: 0;
-    transform: translate(0, 0);
-    border-radius: 0;
     width: 100%;
     height: 100%;
 }
 
-.side .item:nth-child(3) {
-    left: 50%;
-}
-.side .item:nth-child(4) {
-    left: calc(50% + 220px);
-}
-.side .item:nth-child(5) {
-    left: calc(50% + 440px);
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.side .item:nth-child(n + 6) {
-    left: calc(50% + 660px);
-    display: none;
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el área del slide */
 }
 
-/* Estilos del contenido dentro de cada item */
-.item .content {
-    position: absolute;
-    top: 50%;
-    left: 100px;
-    width: 300px;
-    text-align: left;
-    color: #000000;
-    transform: translate(0, -50%);
-    font-family: system-ui;
-    display: none;
-    z-index: 1; /* Asegura que el contenido esté sobre la cortina */
-}
-
-.side .item:nth-child(2) .content {
-    display: block;
-}
-
-.card {
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-    opacity: 0.8;
-    animation: animate 1s ease-in-out 1 0.3s forwards;
-}
-
-/* Estilos del texto y botón en la descripción */
-.content .name {
-    font-size: 40px;
-    text-transform: uppercase;
-    font-weight: bold;
-    opacity: 0;
-    animation: animate 1s ease-in-out 1 forwards;
-}
-
-.content .des {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: animate 1s ease-in-out 1 0.3s forwards;
-}
-
-.content button {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    opacity: 0;
-    border-radius: 10px;
-    background-color: #000;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    animation: animate 1s ease-in-out 1 0.6s forwards;
-}
-
-.content button:hover {
-    background-color: #000000d2;
-}
-
-@keyframes animate {
-    
-    from {
-        opacity: 0;
-        transform: translate(0, 100px);
-        filter: blur(33px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(0);
-        filter: blur(0);
-    }
-}
-@media (max-width: 768px) {
-    #home .container {
-        overflow-x: hidden; /* Oculta el desbordamiento horizontal */
-    }
-
-    .side {
-        display: flex;
-        width: 100vw; /* Ancho completo de la ventana */
-        height: 100vh; /* Alto completo de la ventana */
-        overflow: hidden; /* Oculta los elementos que se desbordan */
-        position: relative; /* Asegura que los items se posicionen correctamente */
-    }
-
-    .item {
-        flex: 0 0 100%; /* Cada item ocupa el 100% del ancho de la ventana */
-        height: 100%; /* Cada item ocupa el 100% de la altura de la ventana */
-        display: none; /* Oculta todos los items por defecto */
-        position: absolute; /* Posiciona absolutamente para que solo uno sea visible */
-        top: 0;
-        left: 0;
-        background-image: none; /* Elimina la imagen de fondo */
-        background-size: cover; /* Opcional, para asegurarse de que el fondo no se muestre */
-    }
-
-    .item.active {
-        display: block; /* Muestra solo el item activo */
-    }
-
-    .item .content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); /* Centra el contenido dentro del item */
-        width: 80%; /* Ajusta el ancho para dispositivos móviles */
-        max-width: 300px; /* Ajusta el ancho máximo */
-        text-align: center; /* Centra el texto dentro del contenido */
-        color: #eee;
-        font-family: system-ui;
-        display: block; /* Asegura que el contenido esté visible */
-        background: transparent; /* Asegura que el fondo del contenido sea transparente */
-    }
-}
-
-
-
-/* Botones de navegación */
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.text {
     position: absolute;
     bottom: 20px;
-    width: 100%;
-    z-index: 5;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-sizing: border-box;
 }
 
+.text h2 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
 
-.button button {
+.text p {
+    font-size: 1.2rem;
+}
+
+button {
+    position: absolute;
+    top: 50%;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    border: none;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
+    border: none;
     cursor: pointer;
+    font-size: 2rem;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
     transition: background-color 0.3s;
 }
 
-.button button:hover {
+button:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-
-
-
-
-
-/* Estilos para la sección Nosotros */
-.section.nosotros {
-    padding: 40px 0;
-    background-color: #f4f4f4;
-    text-align: center; /* Centra el texto en la sección */
+.prev {
+    left: 10px;
 }
 
-.section.nosotros .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+.next {
+    right: 10px;
 }
 
-.section.nosotros h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: #333;
-}
-
-.row {
-    display: flex;
-    justify-content: center; /* Centra las columnas en la fila */
-    flex-wrap: wrap; /* Permite que las columnas se ajusten en pantallas más pequeñas */
-}
-
-.column {
-    flex: 1; 
-    max-width: 300px; /* Aumenta el ancho máximo si es necesario */
-    margin: 30px 15px; /* Reduce el margen horizontal entre columnas */
-    padding: 50px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.column h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.column p {
-    font-size: 16px;
-    color: #666;
-}
-
-/* Ajustes para pantallas más pequeñas */
+/* Responsividad */
 @media (max-width: 768px) {
-    .row {
-        flex-direction: column; /* Cambia la dirección de las columnas a una sola columna en pantallas pequeñas */
-        align-items: center; /* Centra las columnas en la fila */
+    .text {
+        width: 90%;
     }
-
-    .column {
-        margin: 10px 0; /* Ajusta el margen vertical entre columnas */
-        max-width: 90%; /* Reduce el ancho máximo para adaptarse mejor a pantallas pequeñas */
+    
+    .text h2 {
+        font-size: 1.5rem;
+    }
+    
+    .text p {
+        font-size: 1rem;
+    }
+    
+    button {
+        width: 30px;
+        height: 30px;
+        font-size: 1.5rem;
+        line-height: 30px;
     }
 }
-
-
-
 
 
 

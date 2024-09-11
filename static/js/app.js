@@ -1,22 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const items = document.querySelectorAll('.side .item');
-    let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelector('.slides');
+    const slideCount = document.querySelectorAll('.slide').length;
+    let index = 0;
 
-    function showItem(index) {
-    items.forEach((item, i) => {
-        item.classList.toggle('active', i === index);
-    });
-    const offset = -index * 100;
-    document.querySelector('.side').style.transform = `translateX(${offset}%)`;
+    function showSlide(n) {
+        if (n >= slideCount) index = 0;
+        if (n < 0) index = slideCount - 1;
+        slides.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    document.querySelector('.prev').addEventListener('click', () => {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
-    showItem(currentIndex);
+    document.querySelector('.next').addEventListener('click', function() {
+        index++;
+        showSlide(index);
     });
 
-    document.querySelector('.next').addEventListener('click', () => {
-    currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
-    showItem(currentIndex);
+    document.querySelector('.prev').addEventListener('click', function() {
+        index--;
+        showSlide(index);
     });
+
+    // Auto slide every 5 seconds
+    setInterval(function() {
+        index++;
+        showSlide(index);
+    }, 5000);
 });

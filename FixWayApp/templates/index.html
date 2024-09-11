@@ -1,10 +1,11 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FixWay - Taller Mecánico</title>
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <link
       rel="stylesheet"
@@ -17,89 +18,47 @@
   <body>
     {% include 'navbar.html' %}
 
-    <header id="home" class="hero">
-      <div class="container">
-        <div class="cortina">
-          <div class="side">
-            <div
-              class="item"
-              style="background-image: url(../../static/images/foto2.jpg)"
-            >
-              <div class="content">
-                <div class="card">
-                  <div class="name">FixWay</div>
-                  <div class="des">
-                    Realizamos reparaciones especializadas para cualquier tipo
-                    de vehículo, desde autos hasta camiones.
-                  </div>
-                  <button>ver mas</button>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="foto1.jpg" alt="Image 1">
+                <div class="text">
+                    <h2>Texto para Imagen 1</h2>
+                    <p>Descripción de la imagen 1</p>
                 </div>
-              </div>
             </div>
-            <div
-              class="item"
-              style="background-image: url(../../static/images/foto2.jpg)"
-            >
-              <div class="content">
-                <div class="card">
-                  <div class="name">FixWay</div>
-                  <div class="des">
-                    Especialistas en diagnóstico y reparación de vehículos, con
-                    atención personalizada y garantía de calidad.
-                  </div>
-                  <button>ver mas</button>
+            <div class="slide">
+                <img src="foto2.jpg" alt="Image 2">
+                <div class="text">
+                    <h2>Texto para Imagen 2</h2>
+                    <p>Descripción de la imagen 2</p>
                 </div>
-              </div>
             </div>
-            <div
-              class="item"
-              style="background-image: url(../../static/images/foto3.jpg)"
-            >
-              <div class="content">
-                <div class="card">
-                  <div class="name">FixWay</div>
-                  <div class="des">Calidad</div>
-                  <button>ver mas</button>
+            <div class="slide">
+                <img src="foto3.jpg" alt="Image 3">
+                <div class="text">
+                    <h2>Texto para Imagen 3</h2>
+                    <p>Descripción de la imagen 3</p>
                 </div>
-              </div>
             </div>
-            <div
-              class="item"
-              style="background-image: url(../../static/images/foto4.jpg)"
-            >
-              <div class="content">
-                <div class="card">
-                  <div class="name">FixWay</div>
-                  <div class="des">Exelencia</div>
-                  <button>ver mas</button>
+            <div class="slide">
+                <img src="foto4.jpg" alt="Image 4">
+                <div class="text">
+                    <h2>Texto para Imagen 4</h2>
+                    <p>Descripción de la imagen 4</p>
                 </div>
-              </div>
             </div>
-            <div
-              class="item"
-              style="background-image: url(../../static/images/foto5.jpg)"
-            >
-              <div class="content">
-                <div class="card">
-                  <div class="name">FixWay</div>
-                  <div class="des">Garantía</div>
-                  <button>ver mas</button>
+            <div class="slide">
+                <img src="foto5.jpg" alt="Image 5">
+                <div class="text">
+                    <h2>Texto para Imagen 5</h2>
+                    <p>Descripción de la imagen 5</p>
                 </div>
-              </div>
             </div>
-          </div>
-
-          <div class="button">
-            <button class="prev">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button class="next">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-          </div>
         </div>
-      </div>
-    </header>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
 
     <section id="nosotros" class="section nosotros">
       <div class="container">
@@ -160,6 +119,7 @@
         </div>
       </div>
     </section>
+
 
     <footer class="footer">
       <div class="footer-container">
