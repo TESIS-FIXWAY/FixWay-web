@@ -35,8 +35,10 @@ header {
 
 /* Estilos de los items de imagen */
 .side {
-    z-index: 2; /* Mantiene .side por debajo de .cortina */
+    display: flex;
+    transition: transform 0.5s ease;
 }
+
 .container .side .item {
     width: 200px;
     height: 300px;
@@ -197,27 +199,29 @@ header {
 
 /* Botones de navegación */
 .button {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     bottom: 20px;
-    z-index: 5; /* Para estar visible sobre la cortina */
+    width: 100%;
+    z-index: 5;
 }
+
 
 .button button {
     width: 40px;
-    height: 35px;
-    border-radius: 8px;
+    height: 40px;
+    border-radius: 50%;
     border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
     cursor: pointer;
-    margin: 0 5px;
-    border: 1px solid #000;
-    transition: 0.3s;
+    transition: background-color 0.3s;
 }
 
 .button button:hover {
-    background-color: #ababab;
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 
