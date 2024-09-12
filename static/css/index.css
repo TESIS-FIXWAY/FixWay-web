@@ -7,14 +7,14 @@
 
 body {
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Evita el scroll en el body */
+    overflow: auto; /* Evita el scroll en el body */
 }
 
 /* Estilos del slider */
 .slider {
     position: relative;
-    width: 100vw; /* Ancho completo de la ventana */
-    height: 100vh; /* Alto completo de la ventana */
+    width: 100vw; 
+    height: 100vh;
     overflow: hidden;
 }
 
