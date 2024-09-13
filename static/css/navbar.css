@@ -23,13 +23,23 @@ body {
     padding: 10px 0;
     z-index: 1000;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-container {
     width: 90%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Distribuye los elementos equitativamente */
+    align-items: center;
+}
+
+.logo {
+    flex: 1; /* Permite que el logo ocupe un espacio flexible */
+    display: flex;
+    justify-content: flex-start; /* Coloca el logo a la izquierda */
     align-items: center;
 }
 
@@ -44,6 +54,9 @@ body {
     list-style: none;
     display: flex;
     gap: 20px;
+    justify-content: center; /* Centra los enlaces en el medio */
+    align-items: center;
+    flex: 2; /* Permite que los enlaces ocupen más espacio */
 }
 
 .nav-links li a {
@@ -55,6 +68,35 @@ body {
 
 .nav-links li a:hover {
     color: #ff6600;
+}
+
+.cart-container {
+    flex: 1; /* Permite que el carrito ocupe espacio flexible */
+    display: flex;
+    justify-content: flex-end; /* Coloca el carrito a la derecha */
+    align-items: center;
+}
+.cart-icon {
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    position: relative; 
+}
+.cart-count {
+    position: absolute; 
+    top: -10px;
+    right: -10px; 
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Estilos para el menú de hamburguesa en pantallas pequeñas */
@@ -188,13 +230,7 @@ button:hover {
     font-size: 1.5rem;
 }
 
-/* Estilos del carrito */
-.cart-container {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    z-index: 1100; /* Más alto que el navbar */
-}
+
 
 .cart-icon {
     font-size: 24px; /* Tamaño del ícono */
