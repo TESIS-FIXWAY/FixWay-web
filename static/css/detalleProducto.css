@@ -9,16 +9,17 @@ body {
 
 .product-container {
     max-width: 1200px;
+    height: 100vh;
     margin: 120px auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
     background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega sombra para un efecto más pulido */
+    border-radius: 8px; /* Bordes redondeados para un aspecto más moderno */
 }
 
 .product-main {
     display: flex;
-    gap: 40px;
+    gap: 20px; /* Reduce el espacio entre la imagen y los detalles */
     margin-bottom: 40px;
 }
 
@@ -33,26 +34,26 @@ body {
 }
 
 .product-details {
-    flex: 1.5;
+    flex: 2; /* Mayor espacio para los detalles del producto */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .product-name {
-    font-size: 28px;
+    font-size: 24px; /* Tamaño de fuente más pequeño para un diseño más limpio */
     font-weight: bold;
     margin-bottom: 15px;
 }
 
 .product-price {
-    font-size: 24px;
+    font-size: 20px; /* Tamaño de fuente más pequeño para un diseño más limpio */
     color: #4CAF50;
     margin-bottom: 10px;
 }
 
 .product-stock {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 20px;
 }
 
@@ -61,18 +62,19 @@ body {
 }
 
 .buy-button, .add-cart-button {
-    background-color: #3483fa;
+    background-color: #3483FA;
     color: #fff;
-    padding: 12px 24px;
+    padding: 12px 20px; /* Reduce el padding para botones más compactos */
     border: none;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 4px; /* Bordes más suaves para un estilo minimalista */
     margin-right: 10px;
-    font-size: 16px;
+    font-size: 14px; /* Tamaño de fuente más pequeño para botones compactos */
 }
 
 .add-cart-button {
-    background-color: #ffcc00;
+    background-color: #D9E7FA;
+    color: #8DB9FA;
 }
 
 .buy-button:hover {
@@ -84,7 +86,7 @@ body {
 }
 
 .product-description-short {
-    font-size: 16px;
+    font-size: 14px; /* Tamaño de fuente más pequeño para una descripción más sutil */
     margin-bottom: 20px;
 }
 
@@ -92,10 +94,10 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
+    font-size: 14px; /* Tamaño de fuente más pequeño para características */
 }
 
 .product-features li {
-    font-size: 16px;
     margin-bottom: 5px;
 }
 
@@ -104,12 +106,12 @@ body {
 }
 
 .product-description-long h2 {
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .product-description-long p {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
     color: #555;
 }
