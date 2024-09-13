@@ -1,3 +1,4 @@
+
 /* Estilos generales */
 * {
     margin: 0;
@@ -55,6 +56,16 @@ body {
 .nav-links li a:hover {
     color: #ff6600;
 }
+
+/* Estilos para el menú de hamburguesa en pantallas pequeñas */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+
 
 /* Estilos del Carrusel */
 .hero {
@@ -179,8 +190,10 @@ button:hover {
 
 /* Estilos del carrito */
 .cart-container {
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 1100; /* Más alto que el navbar */
 }
 
 .cart-icon {
@@ -205,4 +218,34 @@ button:hover {
     padding: 2px 8px;
     font-size: 14px;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: white;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 1000; /* Asegúrate de que el menú tenga un z-index más bajo */
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar el ícono de hamburguesa */
+        z-index: 1000; /* Asegúrate de que el menú hamburguesa tenga un z-index más bajo que el carrito */
+        margin: 15px 50px 0 0 ;
+    }
+
+    /* Ajuste de la posición del carrito en pantallas pequeñas */
+    .cart-container {
+        margin: 15px 0px 0 0 ;
+        z-index: 1100; /* Mantenerlo por encima del menú hamburguesa */
+    }
 }

@@ -16,6 +16,13 @@
             <div class="logo">
                 <a href="{% url 'index' %}">FixWay</a>
             </div>
+            
+            <!-- Botón de hamburguesa -->
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <!-- Enlaces de navegación -->
             <ul class="nav-links">
                 <li><a href="{% url 'index' %}">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -33,5 +40,12 @@
             </div>
         </div>
     </nav>
+
+    <script>
+        // Toggle de la hamburguesa
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
