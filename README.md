@@ -1,59 +1,35 @@
-# 🚗 **FixWay Web**  
-**Una extensión web de la aplicación de escritorio para la gestión eficiente de talleres mecánicos.**
+# FixWay Web - E-commerce de Inventario
 
----
+FixWay Web es una extensión de la aplicación de escritorio diseñada para la gestión eficiente de talleres mecánicos. Este proyecto tiene como objetivo proporcionar una plataforma web donde los usuarios puedan interactuar con el inventario de productos creado en la versión de escritorio de la aplicación. La solución permite una experiencia de usuario fluida y segura, utilizando las últimas tecnologías en desarrollo web.
 
-## 📋 **Descripción del Proyecto**  
+## Tecnologías Utilizadas
 
-**FixWay Web** es una plataforma e-commerce que complementa la aplicación de escritorio **FixWay Escritorio**, diseñada para la gestión integral de talleres mecánicos. Esta extensión web permite a los usuarios visualizar y adquirir productos del inventario creado desde la aplicación de escritorio, facilitando así la gestión del negocio y brindando una experiencia optimizada para clientes y administradores.
+- **Django (Python)**: Framework de desarrollo web utilizado para levantar la página web, permitiendo una arquitectura robusta y escalable.
+- **Firebase**: Usado como base de datos en tiempo real y herramienta de autenticación, garantizando una experiencia de usuario segura y dinámica.
+- **HTML/CSS/JS**: Tecnologías básicas de frontend para garantizar una interfaz intuitiva y responsiva.
 
-El proyecto está desarrollado de manera privada en colaboración con mi equipo, utilizando tecnologías modernas para garantizar rendimiento, funcionalidad y una interfaz atractiva.
+## Características
 
----
+- **E-commerce de Inventario**: Los usuarios pueden navegar, ver y realizar compras del inventario de productos gestionado desde la aplicación de escritorio.
+- **Autenticación Segura**: Firebase se encarga de la autenticación de usuarios, asegurando que cada sesión esté protegida y sea única.
+- **Interfaz Amigable**: La interfaz de usuario está diseñada para ser sencilla y accesible, facilitando la navegación y las operaciones dentro del sistema.
+- **Actualización en Tiempo Real**: Gracias a Firebase, cualquier cambio en el inventario o en el estado de las compras se refleja instantáneamente.
 
-## 🚀 **Tecnologías Utilizadas**  
+## Instalación
 
-### **Frontend**  
-- **React.js**: Framework principal para la construcción de una interfaz dinámica y atractiva, asegurando una experiencia de usuario fluida y responsiva.  
+1. **Clona este repositorio**:
+   ```bash
+   git clone https://github.com/TESIS-FIXWAY/FixWay-web.git
 
-### **Backend**  
-- **Firebase**:  
-  - **Base de datos en tiempo real**: Para garantizar sincronización instantánea entre los productos del inventario y la web.  
-  - **Autenticación segura**: Para proteger el acceso a la plataforma.  
+2. **instala las dependencias**:
+   ```bash
+   cd FixWay-web
+   pip install django
+   pip install firebase_admin
 
-### **Aplicación de Escritorio**  
-- **Tauri.js**: Permite empaquetar la aplicación web como un programa de escritorio ligero y eficiente en recursos.  
+3. **Ejecuta el servidor de desarrollo de Django**:
+   ```bash
+    python manage.py runserver
 
----
+4. **Abre tu navegador y visita http://127.0.0.1:8000 para ver la aplicación en funcionamiento.**:
 
-## 🎯 **Funcionalidades Principales**  
-
-- **Visualización del Inventario**: Productos cargados desde **FixWay Escritorio** se muestran de forma clara y accesible.  
-- **E-commerce Integrado**: Permite la gestión de compras de manera rápida y organizada.  
-- **Autenticación de Usuarios**: Registro e inicio de sesión seguros mediante Firebase.  
-- **Sincronización en Tiempo Real**: Actualización constante entre la aplicación de escritorio y la plataforma web.  
-
----
-
-## 🖥️ **FixWay Escritorio**  
-
-La versión de escritorio de FixWay sirve como núcleo para la gestión completa del inventario y las operaciones de un taller mecánico. Los productos del inventario se sincronizan con la plataforma web, permitiendo a los clientes explorar y realizar compras online.  
-
-Más detalles sobre **FixWay Escritorio** disponibles en:  
-- [LinkedIn - Proyectos de Samuel Gajardo](https://www.linkedin.com/in/samuel-gajardos/details/projects/)  
-
----
-
-## 📂 **Estructura del Proyecto**  
-
-```bash
-FixWay-web/
-├── public/          # Archivos estáticos
-├── src/             # Código fuente principal
-│   ├── components/  # Componentes reutilizables
-│   ├── pages/       # Páginas de la aplicación
-│   ├── services/    # Integración con Firebase
-│   ├── assets/      # Imágenes y recursos
-│   └── App.js       # Componente raíz
-├── package.json     # Dependencias y scripts
-└── README.md        # Documentación
